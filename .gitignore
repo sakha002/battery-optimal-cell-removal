@@ -13,3 +13,8 @@ Data/orionbms_log_2018-12-11-00-29-03/orionbms_log_2018-12-08-11-46-18.csv
 Data/orionbms_log_2018-12-11-00-29-03/orionbms_log_2018-12-11-00-29-03.csv
 Data/orionbms_log_2018-12-11-00-29-03/orionbms_log_2018-12-11-14-19-22.csv
 Data/Combined/cellremoval2.xlsx
+*.glo
+*.aux
+*.idx
+*.nlo
+*.gz
