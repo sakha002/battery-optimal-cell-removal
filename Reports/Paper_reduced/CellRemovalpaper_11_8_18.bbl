@@ -52,25 +52,6 @@ K.~Goebel, B.~Saha, A.~Saxena, J.~R. Celaya, and J.~P. Christophersen,
   ``Prognostics in battery health management,'' \emph{IEEE instrumentation \&
   measurement magazine}, vol.~11, no.~4, pp. 33--40, 2008.
 
-\bibitem{MASIHTEHRANI20132}
-M.~Masih-Tehrani, M.-R. Ha'iri-Yazdi, V.~Esfahanian, and A.~Safaei, ``Optimum
-  sizing and optimum energy management of a hybrid energy storage system for
-  lithium battery life improvement,'' \emph{Journal of Power Sources}, vol.
-  244, pp. 2 -- 10, 2013.
-
-\bibitem{7588052}
-D.~{Stroe}, V.~{Knap}, M.~{Swierczynski}, A.~{Stroe}, and R.~{Teodorescu},
-  ``Operation of a grid-connected lithium-ion battery energy storage system for
-  primary frequency regulation: A battery lifetime perspective,'' \emph{IEEE
-  Trans. on Industry Applications}, vol.~53, no.~1, pp. 430--438, Jan 2017.
-
-\bibitem{7428105}
-T.~{Cui}, S.~{Chen}, Y.~{Wang}, Q.~{Zhu}, S.~{Nazarian}, and M.~{Pedram},
-  ``Optimal co-scheduling of hvac control and battery management for
-  energy-efficient buildings considering state-of-health degradation,'' in
-  \emph{in Proc. of 21st Asia and South Pacific Design Automation Conference},
-  Jan 2016, pp. 775--780.
-
 \bibitem{saez2015second}
 A.~Saez-de Ibarra, E.~Martinez-Laserna, C.~Koch-Ciobotaru, P.~Rodriguez, D.-I.
   Stroe, and M.~Swierczynski, ``Second life battery energy storage system for
@@ -100,5 +81,14 @@ Q.~Liao, M.~Mu, S.~Zhao, L.~Zhang, T.~Jiang, J.~Ye, X.~Shen, and G.~Zhou,
   ``Performance assessment and classification of retired lithium ion battery
   from electric vehicles for energy storage,'' \emph{International Journal of
   Hydrogen Energy}, vol.~42, no.~30, pp. 18\,817--18\,823, 2017.
+
+\bibitem{PHIL}
+Z.~Taylor, H.~Hejazi, and H.~Mohsenian-Rad, ``Power hardware-in-loop simulation
+  of grid-connected battery systems with reactive power control capability,''
+  in \emph{Proc. of IEEE PES NAPS}, Morgantown, WV, Sep. 2017.
+
+\bibitem{elitepower}
+{Elite Power Solutions}. Lithium ion battery datasheet.
+  elitepowersolutions.com/lithium-ion-batteries.
 
 \end{thebibliography}

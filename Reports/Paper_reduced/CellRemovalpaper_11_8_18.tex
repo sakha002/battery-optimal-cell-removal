@@ -51,7 +51,7 @@
 
 \author{ Hossein Akhavan-Hejazi, \IEEEmembership{Member,~IEEE}, Zach Taylor, \IEEEmembership{ Member,~IEEE},  \\ and Hamed Mohsenian-Rad, \IEEEmembership{Senior Member,~IEEE}
 
-\thanks{H. Hejazi, Z. Taylor,  and H. Mohsenian-Rad are with the Department of Electrical Engineering, University of California, Riverside, CA, USA.  The corresponding author is H. Mohsenian-Rad, e-mail: hamed@ece.ucr.edu.} \vspace{-0.5cm}}
+\thanks{The authors are with the College of Engineering, University of California, Riverside, CA, USA.  The corresponding author is H. Mohsenian-Rad, e-mail: hamed@ece.ucr.edu.} \vspace{-0.5cm}}
 
 \maketitle
 
@@ -123,49 +123,60 @@ We also perform case studies to asses the impact of  cell removal on  the operat
 Battery cells  in grid-connected battery energy storage systems (BESSs), degrade  over time.
 To maintain economic viability, the BESS however should continue operation even with  degraded batteries.
 While  modeling and operation  of grid-connected BESS has gained substantial attention in the literature, e.g. in \cite{8663451, 8003332}, there are still not  many studies focusing on operating BESS with  aged batteries.  
-For example,  there are  studies on degradation modeling and capacity estimation of battery cells, e.g in \cite{rong2006analytical,  roscher2011detection, martinez2016evaluation, goebel2008prognostics},  and  studies on operation of ESS with consideration of health impacts \cite{MASIHTEHRANI20132, 7588052, 7428105}, there are limited studies, e.g. in \cite{saez2015second, keeli2012optimal},  on the operation management of aged batteries for grid applications. For instance \cite{keeli2012optimal} addresses  the uncertainties in the capacity of aged batteries and propose a design based on a probability distribution for the remained capacity and  MonteCarlo simulation,  but  it does not directly engage in the modeling of aged battery.
-
-There are studies in the context of second-life-batteries that address modeling and impact analysis of aged batteries in design of customized converters for hybrid systems with aged batteries \cite{6861989}, battery monitoring systems with considering the mismatch in condition of aged  batteries \cite{tong2017demonstration}, and classification of aged electric vehicle batteries based on their capacity and health conditions \cite{liao2017performance}. However, the majority of works for operation management of the ESS, overlook such impacts.
-
-In this work, we develop a new model for analysis of the degraded cells impact  on operation of  an aged battery system for grid applications. We  are interested to answer the question on \emph{"how the performance variation of the battery cells and the battery pack construct may impact the overall capacity and operation of the ESS?"} In this regard, we identify the conditions, and algorithms to predict when removing a battery cells from the pack may enhance the operation of the system.  
+For example,  there are  studies on degradation modeling and capacity estimation of battery cells, e.g in \cite{rong2006analytical,  roscher2011detection, martinez2016evaluation, goebel2008prognostics}.
+%  and  studies on operation of ESS with consideration of health impacts \cite{MASIHTEHRANI20132, 7588052, 7428105}, 
+There are also limited studies, e.g. in \cite{saez2015second, keeli2012optimal},  to support the use of second life batteries in grid applications. 
+%For instance \cite{keeli2012optimal} addresses  the uncertainties in the capacity of aged batteries and propose a design based on a probability distribution for the remained capacity and  MonteCarlo simulation,  but  it does not directly engage in the modeling of aged battery.
+%	
+Aged batteries and their characteristics are also considered in designing customized converters \cite{6861989}, battery monitoring systems  \cite{tong2017demonstration}, and transportation electrification \cite{liao2017performance}.
+% However, the majority of works for operation management of the ESS, overlook such impacts.
+However, the existing literature on grid-integrated BESS often overlooks a very simple and practical solution, and that is the idea of removing certain cells that are holding back the performance of the battery pack as a whole. 
+In this letter paper, we seek to address this issue by answering the following two questions: 
+\emph{"how the performance variation of the battery cells and the battery pack construct may impact the overall capacity and operation of the BESS?"} 
+ Accordingly, \emph{how can we systematically remove one or more battery cells to improve the overall capacity and collective operation of the remaining cells in BESS?} 
+In this regard, we identify the conditions, and algorithms to predict when removing a battery cells from the pack may enhance the operation of the system.  
 
 %[ref3] states the need for logging and storing the  battery operation and ageing in order to facilitate the use of aged batteries.
 
 
 %We  argue that, if the reduced capacity of a battery pack is due to a single or few cells with lower capacity, then it could be that removing the degraded cell(s) actually increases the battery pack capacity. We then present a method in order to identify the cells, if any, that need to be removed to enhance the usable capacity of the battery pack.
 
-\section{Battery Pack Capacity Modeling}
+\section{Battery Pack Capacity Modeling Estimation with and without a Particular Cell}
 
-A typical battery pack is composed of many cells that are connected in series and strings of cells that are connected in parallel. 
-Despite all efforts the cells are not exactly the same and particularly over time, not all cells within a battery pack will have the same conditions.
-Thus, the voltage trajectory during charge/discharge will vary for different cells in a pack.
-For instance, consider the voltage profiles of a lab-scale BESS,  shown in Fig. \ref{fig:packoperation}, during one cycle of discharge and charge.
-While the 12 cells in this single battery pack are discharged and charged with the same current, the voltage of some cells decline and incline faster than others.
-Additionally, when the pack begins to charge, some of the cells may already have some energy stored.
-Thus, the available capacity of a battery pack is often affected by the capacity variations  across different  series cells and parallel strings.
-
-
-When the battery cells in series  are discharged with the same current, the voltage on the terminals of those cells that are in poorer state of health conditions  declines faster.
-Thus they reach to the minimum allowed voltage sooner than the other series cells in the  string.
-At this point, often the battery management systems stop the discharge operation for safety of the string.
-Accordingly, the capacity limit of the cells with lowest capacity limits the battery operation, hence, some of the battery  capacity remains unused.
-In this section we estimate the capacity which is lost due to a poor cell.
+A typical battery pack comprises several battery  cells that are connected in series and strings of cells that are connected in parallel. 
+Different battery  cells within a battery pack do not have the same characteristics when they are manufactured.
+ Also, over time, they age differently; thus, further  diverging in their  conditions.
+As a result,  the voltage trajectory during charge/discharge will vary for different cells.
+For instance, consider the voltage profiles of a 12-cell BESS,   in Fig. \ref{fig:packoperation}, during one charge  cycle and one discharge cycle.
+While all 12 cells in this single battery pack are discharged and charged with the same current, the voltage of some cells decline and incline faster than others.
+%Additionally, when the pack begins to charge, some of the cells may already have some energy stored.
+%Thus, the available capacity of a battery pack is often affected by the capacity variations  across different  series cells and parallel strings.
+%
+%
+%When the battery cells in series  are discharged with the same current, the voltage on the terminals of those cells that are in poorer state of health conditions  declines faster.
+Therefore, during discharge, some cells  reach to the minimum allowed voltage sooner than the other series cells in the  string.
+At this point,  the battery management system(BMS) stops the discharge operation for safety concerns.
+Accordingly, certain cells become the limiting factor for the overall  battery pack operation, 
+%hence, some of the battery  capacity remains unused.
+%In this section we estimate the capacity which is lost due to a poor cell.
+while the remaining capacity of some other cells is not used. 
+This is essentially a \emph{lost capacity} due to the different aging conditions of different cells within the pack. 
 
 \begin{figure}[t]
 \centering
 \vspace{-0.2cm}
-{\scalebox{.5}{\includegraphics*{figs/TestVoltagesV4.eps}}} \vspace{-0.1cm}
+{\scalebox{.5}{\includegraphics*{figs/TestVoltagesV4.eps}}} \vspace{-0.2cm}
 \caption{The voltage profiles of the cells in a battery pack.}
 \vspace{-0.3cm}
 \label{fig:packoperation}
 \end{figure}
 
-\subsection{Capacity Modeling of Cells  in Series.}
-Consider a battery pack with $\overline{n}$  number of cells in series. 
+\subsection{Initial Capacity}
+Consider a battery pack with $\overline{n}$  as the number of cells in series. 
 We discretize the operation horizon into time slots of duration $\tau$.
-Let us denote the charge level of cell $n$ at time slot $t$  during the battery operation with $C[t,n]$.
+Suppose $C[t, b]$ denotes the charge level of cell $n$ at time slot $t$.
 We also denote the capacity limit of cell $n$ with $\overline{c}_n$.
-Naturally, when the battery module is discharged/charged  the power drawn/stored in the battery module at any time slot $t \in \mathcal{T}$, denoted by $P_{out}[t]$,  is the sum of the power drawn/stored in each individual cell $n$, denoted by $P_{o}[t,n]$.
+Naturally, when the battery module is discharged/charged,  the power drawn/stored in the battery module at any time slot $t \in \mathcal{T}$, denoted by $P_{out}[t]$,  is the sum of the power drawn/stored in each individual cell $n$, denoted by $P_{o}[t,n]$.
 %\begin{equation}
 %P_{out}[t]=\sum_{n \in \mathcal{N}}  P_{o}[t,n].%,  \  \  \  \forall t \in \mathcal{T}.
 %\label{Pmodule}
@@ -176,7 +187,7 @@ $P_{o}[t,n]$ can take both positive and negative values, where negative values i
 
 
 If we assume a simple model with an internal resistance $r[n]$ for each cell, the stored energy in the cell is equal to:
-
+%
 \begin{equation}
 C[t,n]=C[t-1,n] +  \tau(P_{o}[t,n] - r[n]I^2[t]).
 \label{energycell}
@@ -191,7 +202,7 @@ Thus the cell $n$ is considered at its maximum charge level when its terminal vo
 We denote this charge level $C[t_c,n]=\overline{c}[n]$  the capacity limit of cell $n$.
 similarly, the cell is considered at its minimum capacity, $\underline{c}[n]$, when $V_{o}[t_c,n]=\underline{v}$.
 Accordingly, the capacity of cell $n$ can be obtained  as:
-
+%
 \begin{equation}
 \overline{c}[n]=   \sum_{t=t_{\underline{c}[n]}}^{t_{\overline{c}[n]} } \tau(P_{o}[t,n] - r[n]I^2[t]),
 \end{equation}
@@ -202,7 +213,7 @@ Accordingly, the capacity of cell $n$ can be obtained  as:
 \noindent where $t_{\underline{c}[n]}$ and $t_{\overline{c}[n]}$ are the time instances a cell reaches to minimum and maximum capacity.
 Since we cannot overcharge a single cell, every cell is limited to the capacity of the smallest capacity cell; even if the cells are balanced.
 Due to this we can find the maximum usable energy storage capability for a pack of cells, denoted by $ \overline{C}$,  to be:
-
+%
 \begin{equation}
 %\begin{split}
 \overline{C}=\overline{n} \ \underset{n\in \mathcal{A}}{min} \ \overline{c}[n] ,
@@ -217,37 +228,38 @@ Due to this we can find the maximum usable energy storage capability for a pack 
 %%We discuss in section ??, how to obtain the  value of $\overline{C}$  despite the lack of knowledge on all the unknown parameters.
 %%We discuss in section ??, how to obtain the  value of all  unknown parameters.
 %%
-The amount of the available energy delivered from the pack is determined based on the cell with highest resistance. 
-If battery pack is fully charged, then during discharge cycle we have:
+%The amount of the available energy delivered from the pack is determined based on the cell with highest resistance. 
+%If battery pack is fully charged, then during discharge cycle we have:
+%
+%\begin{equation}
+%\begin{split}
+%\overline{E} = \overline{C} +  \overline{n} \ \underset{n\in \mathcal{A}}{min} \ \ 
+%\left(   \sum_{t=t_{\overline{c}[n]}}^{   t_{\underline{c}[n]}}  \tau(P_{o}[t,n] - r[n]I^2[t]) \right).
+%%&=\overline{n} \ \underset{n\in \mathcal{A}}{min}  \left(   \sum_{t=t_{\underline{c}[n]}}^{t_{\overline{c}[n]}}  \tau(P_{o}[t,n] - r[n]I^2[t]) \right),
+%\end{split}
+%\label{available_energy}
+%\end{equation}
+%
+%\noindent Here  we have $P[t,n]$ a negative value during the discharge; the cell that sooner deplete the stored energy will have a greater negative sum of energy.
+%Often a cell that is in a degraded condition has  high resistance in addition to the low capacity. %, however, as we will see in the section ??, we can have other cells as well with similar resistance.
+%
 
-\begin{equation}
-\begin{split}
-\overline{E} = \overline{C} +  \overline{n} \ \underset{n\in \mathcal{A}}{min} \ \ 
-\left(   \sum_{t=t_{\overline{c}[n]}}^{   t_{\underline{c}[n]}}  \tau(P_{o}[t,n] - r[n]I^2[t]) \right).
-%&=\overline{n} \ \underset{n\in \mathcal{A}}{min}  \left(   \sum_{t=t_{\underline{c}[n]}}^{t_{\overline{c}[n]}}  \tau(P_{o}[t,n] - r[n]I^2[t]) \right),
-\end{split}
-\label{available_energy}
-\end{equation}
-
-\noindent Here  we have $P[t,n]$ a negative value during the discharge; the cell that sooner deplete the stored energy will have a greater negative sum of energy.
-Often a cell that is in a degraded condition has  high resistance in addition to the low capacity. %, however, as we will see in the section ??, we can have other cells as well with similar resistance.
-
-
-\subsection{Diagnosis for Cell Removal }
-Next, we investigate the model to identify if removing a cell could increase the capacity of the battery pack.
+\subsection{Capacity After Cell Removal }
+Next, we investigate  if removing a cell could increase the capacity of the battery pack.
 Normally  a cell is not removed because of being out of balance,  rather the battery  pack would require (SoC) balancing.
 Accordingly,  when we perform the  analysis for necessity of cell removal, we assume the pack is balanced and the minimum SoC of each cell is zero Wh.
 %%We assume the pack is balanced,  as a cell is not removed because of being out of balance, rather the pack would require balancing.
-Let us define a new set, $\mathcal{B}_x$ as the set of all cells except the $x$ lowest capacity cells.
-Typically x is one; but it could also be greater than one if there are multiple cells with the lowest capacity.
+Let us define a new set, $\mathcal{B}_x$ as the set of all cells except for the $x$ lowest capacity cells.
+Typically $x=1$ but it could also be greater than one if there are multiple cells with the low capacity.
 If we build a pack from the cells in  $\mathcal{B}_x$, the new pack would have $\overline{n} - x$ cells, thus the new capacity is:
 
-%%\begin{equation}
-%(\overline{n}-x) \underset{m\in \mathcal{B}_x}{min} \ \overline c[m]
-%\label{eq:rhscap}
-%\end{equation}
+\begin{equation}
+\label{eq:rhscap}
+(\overline{n}-x) \underset{m\in \mathcal{B}_x}{min} \ \overline c[m]
+\end{equation}
 
-The number of cells is reduced by $x$, but now the minimum capacity cell(s) have been removed; therefore the $\min(\cdot)$ term in (\ref{eq:rhscap}) is now greater than the $\min(\cdot)$ term in (\ref{eq:lhscap}). The question becomes, will this new capacity gain be greater than the capacity loss from the removed cell?
+The number of cells is reduced by $x$, but now the minimum capacity cell(s) have been removed; therefore the $\min(\cdot)$ term in (\ref{eq:rhscap}) is now greater than the $\min(\cdot)$ term in (\ref{eq:lhscap}).
+ The question   becomes, will this new capacity gain be greater than the capacity loss from the removed cell?
 
 Mathematically, this question can be formulated as whether the following inequality holds:
 
@@ -266,63 +278,63 @@ In this case, if we denote the battery cells in each string by index $s$,  then 
 \label{eq:removecellineq2}
 \end{equation}
 %
-\subsection{Parameter Estimation for Battery Capacity} \label{sec:parameter_estimation}
-
-A challenge is to accurately estimate the parameters  $r[n]$, $t_{\underline{c}_n} $,  and $t_{\overline{c}_n} $  during the system operation and for all cells. % may not be an easy task.
-%Since the battery cells show a consistent voltage profile in the middle region of their capacity, the estimation often is performed in the upper and lower non-linear voltage regions, i.e. when they are close to fully charged or depleted.
- %As the pack operation is limited by the cell with lowest voltage, the other cells may still have some remained charge capacity.%be in the middle region,
-%We can obtain the capacity of the pack though, without determining all cell parameters. 
-%The pack capacity is obtained by identifying the parameters of the weakest cell.
-%Yet, in order to estimate the capacity of the pack after removing the weak cells, we should identify parameters of other cells as well.
-%When we operate the battery pack over a full cycle,   all cells  receive and deliver an amount of energy at their terminals very close to that for the cell with lowest capacity.
+%\subsection{Parameter Estimation for Battery Capacity} \label{sec:parameter_estimation}
 %
-We start by estimating the value of $r[n]$ for the weakest cell. 
-When we operate the pack over a full cycle, the time instances of the  minimum and maximum capacity for this cell, i.e. $t_{\underline{c}_n} $  and $t_{\overline{c}_n} $,  are known as it is the same as that for the pack.
-We can  measure the energy delivered and drawn from the cell at the terminal during the cycle.
-The mismatch is the energy loss in the cell during the cycle, thus we can obtain the $r$ value, having the values of current during the cycle.
-
-
-\begin{figure}[t]
-\centering
-\vspace{-0.2cm}
-{\scalebox{.5}{\includegraphics*{figs/Voltage_continued_chargedischarge.eps}}} \vspace{-0.1cm}
-\caption{Measured and estimated model output of  battery cells during  (a) continued charge  and (b) continued discharge.}
-\vspace{-0.3cm}
-\label{fig:voltagestimate}
-\end{figure}
-
-
-
-To estimate other cells' parameters, we note that they receive similar amount of energy at their terminals to that for the cell with lowest capacity.
-However, at the end of cycle they have remaining energy as their internal energy loss is lower.
-We estimate the duration that each cell may have continued discharging, by fitting a quadratic regressive model to the observed voltage data of that cell in the lower region, and extrapolate to the point they reach $\underline{v}$ as shown in Fig. \ref{fig:voltagestimate}.
-From that, we can estimate the energy that could be drawn from the cell, and estimate the $r$ values similarly.
-
-For cells' capacity, we similarly extrapolate from the fitted model over the upper region  of each cell, until the model voltage reaches to the $\overline{v}$.
-Next by estimating the energy delivered at the cell terminal, and given $r[n]$, we estimate the charge that can be stored in the cell.
-
-
-%\subsection{Battery System Operation  Implications}
-%\footnote{Hossein: I think the below formulations could be removed or included in the case studies, I only include it for our own reference.}
-%Next, we include a discussion on how the above models can also be incorporated and have impact on the battery system operation management. 
-%We assume the battery is operated for a typical behind the meter peak load shaving application.
-%We also assume that the battery system is composed of $\overline{s}$   battery strings in parallel.
-%We assume if a string of series battery cells reaches to the lower bound or upper bound limits, the operation of that string will be discontinued, but other strings can continue operation so the battery system will not halt operation.
-%The cycle efficiency of a battery string can be obtained from $ \eta^s= \overline{E}^s/\overline{C}^s$.
-%Accordingly, the system operation with considering the cell limits will be :
+%A challenge is to accurately estimate the parameters  $r[n]$, $t_{\underline{c}_n} $,  and $t_{\overline{c}_n} $  during the system operation and for all cells. % may not be an easy task.
+%%Since the battery cells show a consistent voltage profile in the middle region of their capacity, the estimation often is performed in the upper and lower non-linear voltage regions, i.e. when they are close to fully charged or depleted.
+% %As the pack operation is limited by the cell with lowest voltage, the other cells may still have some remained charge capacity.%be in the middle region,
+%%We can obtain the capacity of the pack though, without determining all cell parameters. 
+%%The pack capacity is obtained by identifying the parameters of the weakest cell.
+%%Yet, in order to estimate the capacity of the pack after removing the weak cells, we should identify parameters of other cells as well.
+%%When we operate the battery pack over a full cycle,   all cells  receive and deliver an amount of energy at their terminals very close to that for the cell with lowest capacity.
+%%
+%We start by estimating the value of $r[n]$ for the weakest cell. 
+%When we operate the pack over a full cycle, the time instances of the  minimum and maximum capacity for this cell, i.e. $t_{\underline{c}_n} $  and $t_{\overline{c}_n} $,  are known as it is the same as that for the pack.
+%We can  measure the energy delivered and drawn from the cell at the terminal during the cycle.
+%The mismatch is the energy loss in the cell during the cycle, thus we can obtain the $r$ value, having the values of current during the cycle.
 %
-%\begin{equation}
-%\begin{split}
-%\underset{P[t,s]}{ \mathbf{min}}  &\ \  \underset{t \in [0,\cdots,T]}{max}(  L[t]+ \sum_s P[t,s] ) \\
-%\mathbf{s.t.}  \ \    &C[t,s]= C[t-1,s] + min( \eta^s P[t,s], 1/\eta^s P[t,s])  \\
-%& 0 \leq   C[t,s] \leq \overline{n} \min_{n} \overline{c}[n,s] \\
-%& - \overline{p} \leq  P[t,s]  \leq  \overline{p} \\
-%& - \mathcal{P} \leq \sum_s  P[t,s]  \leq \mathcal{P}
-%\end{split}
-%\end{equation}
 %
-%\noindent where $\overline{p}$ denotes the  power limit of the cells and $\mathcal{P}$ is the rating of the inverter.
-
+%\begin{figure}[t]
+%\centering
+%\vspace{-0.2cm}
+%{\scalebox{.5}{\includegraphics*{figs/Voltage_continued_chargedischarge.eps}}} \vspace{-0.1cm}
+%\caption{Measured and estimated model output of  battery cells during  (a) continued charge  and (b) continued discharge.}
+%\vspace{-0.3cm}
+%\label{fig:voltagestimate}
+%\end{figure}
+%
+%
+%
+%To estimate other cells' parameters, we note that they receive similar amount of energy at their terminals to that for the cell with lowest capacity.
+%However, at the end of cycle they have remaining energy as their internal energy loss is lower.
+%We estimate the duration that each cell may have continued discharging, by fitting a quadratic regressive model to the observed voltage data of that cell in the lower region, and extrapolate to the point they reach $\underline{v}$ as shown in Fig. \ref{fig:voltagestimate}.
+%From that, we can estimate the energy that could be drawn from the cell, and estimate the $r$ values similarly.
+%
+%For cells' capacity, we similarly extrapolate from the fitted model over the upper region  of each cell, until the model voltage reaches to the $\overline{v}$.
+%Next by estimating the energy delivered at the cell terminal, and given $r[n]$, we estimate the charge that can be stored in the cell.
+%
+%
+%%\subsection{Battery System Operation  Implications}
+%%\footnote{Hossein: I think the below formulations could be removed or included in the case studies, I only include it for our own reference.}
+%%Next, we include a discussion on how the above models can also be incorporated and have impact on the battery system operation management. 
+%%We assume the battery is operated for a typical behind the meter peak load shaving application.
+%%We also assume that the battery system is composed of $\overline{s}$   battery strings in parallel.
+%%We assume if a string of series battery cells reaches to the lower bound or upper bound limits, the operation of that string will be discontinued, but other strings can continue operation so the battery system will not halt operation.
+%%The cycle efficiency of a battery string can be obtained from $ \eta^s= \overline{E}^s/\overline{C}^s$.
+%%Accordingly, the system operation with considering the cell limits will be :
+%%
+%%\begin{equation}
+%%\begin{split}
+%%\underset{P[t,s]}{ \mathbf{min}}  &\ \  \underset{t \in [0,\cdots,T]}{max}(  L[t]+ \sum_s P[t,s] ) \\
+%%\mathbf{s.t.}  \ \    &C[t,s]= C[t-1,s] + min( \eta^s P[t,s], 1/\eta^s P[t,s])  \\
+%%& 0 \leq   C[t,s] \leq \overline{n} \min_{n} \overline{c}[n,s] \\
+%%& - \overline{p} \leq  P[t,s]  \leq  \overline{p} \\
+%%& - \mathcal{P} \leq \sum_s  P[t,s]  \leq \mathcal{P}
+%%\end{split}
+%%\end{equation}
+%%
+%%\noindent where $\overline{p}$ denotes the  power limit of the cells and $\mathcal{P}$ is the rating of the inverter.
+%
 %%%%%%%%%%%%%%%%%%%%%%
 \section{Experimental Results, Model Validations,\\ and Operation Impact Assessment} \label{sec:results}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -330,7 +342,7 @@ Next by estimating the energy delivered at the cell terminal, and given $r[n]$, 
 
 \subsection{Initial Capacity Testing} \label{sec:capacity_test_1}
 
-The Power Hardware in Loop (PHIL) tesbed presented in \cite{NAPS_RTDS} was used to perform experimental testing on battery system operation. The battery pack in this test consists of twelve  40Ah GBS Lithium Iron Phosphate cells \cite{elitepower}. However, these cells are in the used condition, and several of them have degraded over time.  Before the test, each cell was balanced and discharged to a voltage of 3.00 V.  The test included operating the battery pack over a full cycle, by charging and discharging at a constant 1 A current.  %\ref{fig:initial_soc}(a).
+The Power Hardware in Loop (PHIL) tesbed presented in \cite{PHIL} was used to perform experimental testing on battery system operation. The battery pack in this test consists of twelve  40Ah GBS Lithium Iron Phosphate cells \cite{elitepower}. However, these cells are in the used condition, and several of them have degraded over time.  Before the test, each cell was balanced and discharged to a voltage of 3.00 V.  The test included operating the battery pack over a full cycle, by charging and discharging at a constant 1 A current.  %\ref{fig:initial_soc}(a).
 The voltages  at each cell terminals  was  recorded. % while the pack was charged from empty to full.  
 %Accordingly, we obtain the energy delivered to each cell terminal during this period. %, as shown in Fig. \ref{fig:initial_soc}(b). 
 %Next the battery pack was discharged until fully depleted. 
