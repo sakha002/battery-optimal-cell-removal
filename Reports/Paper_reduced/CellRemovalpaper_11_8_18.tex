@@ -47,9 +47,9 @@
 
 \begin{document}
 
-\title{\fontsize{22.5pt}{27pt}\selectfont{Optimal Cell Removal to Enhance Operation of Aged Battery Storage Systems }\vspace{0.05cm}}
+\title{\fontsize{22.5pt}{27pt}\selectfont{Optimal Cell Removal to Enhance Operation of Aged Grid-Tied Battery Storage Systems  }\vspace{0.05cm}}
 
-\author{ Hossein Akhavan-Hejazi, \IEEEmembership{Member,~IEEE}, Zach Taylor, \IEEEmembership{Student Member,~IEEE}, and Hamed Mohsenian-Rad, \IEEEmembership{Senior Member,~IEEE}
+\author{ Hossein Akhavan-Hejazi, \IEEEmembership{Member,~IEEE}, Zach Taylor, \IEEEmembership{ Member,~IEEE},  \\ and Hamed Mohsenian-Rad, \IEEEmembership{Senior Member,~IEEE}
 
 \thanks{H. Hejazi, Z. Taylor,  and H. Mohsenian-Rad are with the Department of Electrical Engineering, University of California, Riverside, CA, USA.  The corresponding author is H. Mohsenian-Rad, e-mail: hamed@ece.ucr.edu.} \vspace{-0.5cm}}
 
@@ -58,9 +58,14 @@
 \vspace{-0.4cm}
 
 \begin{abstract}
-The operation management and maintenance of aged batteries is essential in improving the life-time and viability of grid-connected energy storage systems. In this work we present a new model to assess the impact of degraded cells in the battery pack on capacity and operation performance of the battery storage system.  We identify the conditions that removing cells can improve the operation of the system and estimate the capacity increase to justify the cell removal. The  experimental testing of a complete battery system with aged cells, validates the models and shows the increase in capacity with removing the identified cells. We also perform numerical studies to asses the impact of  cell removal on  the operation of a typical aged battery system. \vspace{0.3cm}
+The operation, management, and maintenance of aged batteries is essential to improve the life-time and viability of grid-connected energy storage systems. 
+%In this work we present a new model to assess the impact of degraded cells in the battery pack on capacity and operation performance of the battery storage system.  
+In this paper, we optimize the process of  identifying which battery cells from a battery pack should be removed due to aging in order to  improve the overall operation of the battery pack for grid applications. 
+% can improve the operation of the system and estimate the capacity increase to justify the cell removal. 
+The  experimental hardware-in-the-loop (HIL) testing of a complete grid-integrated battery system with aged cells are used to  validate the developed  models and show the increase in overall  capacity with removing the identified cells. 
+We also perform case studies to asses the impact of  cell removal on  the operation of an aged battery system in a peak demand control application. \vspace{0.3cm}
 
-\textbf{\emph{Keywords}}: Energy storage, aged battery pack,  cell removal.
+\textbf{\emph{Keywords}}: Aged battery pack, grid-tied  storage,  cell removal.
 \end{abstract}
 
 \vspace{-0.1cm}
@@ -115,10 +120,10 @@ The operation management and maintenance of aged batteries is essential in impro
 %Contributions
 %
 %\color{black}
-The batteries in grid-connected energy storage systems (ESSs), degrade  during the life-time of the system.
-To maintain economic viability, the system should continue operation even with  degraded batteries.
-Te modeling and operation management of grid-connected battery storage systems has gained substantial attention in the literature, e.g. in \cite{8663451, 8003332}; yet, there are not  many studies focusing on operation management, modeling, and maintenance of aged batteries.  
-Although there are many studies on degradation modeling and capacity estimation of battery cells, e.g in \cite{rong2006analytical,  roscher2011detection, martinez2016evaluation, goebel2008prognostics},  and  studies on operation of ESS with consideration of health impacts \cite{MASIHTEHRANI20132, 7588052, 7428105}, there are limited studies, e.g. in \cite{saez2015second, keeli2012optimal},  on the operation management of aged batteries for grid applications. For instance \cite{keeli2012optimal} addresses  the uncertainties in the capacity of aged batteries and propose a design based on a probability distribution for the remained capacity and  MonteCarlo simulation,  but  it does not directly engage in the modeling of aged battery.
+Battery cells  in grid-connected battery energy storage systems (BESSs), degrade  over time.
+To maintain economic viability, the BESS however should continue operation even with  degraded batteries.
+While  modeling and operation  of grid-connected BESS has gained substantial attention in the literature, e.g. in \cite{8663451, 8003332}, there are still not  many studies focusing on operating BESS with  aged batteries.  
+For example,  there are  studies on degradation modeling and capacity estimation of battery cells, e.g in \cite{rong2006analytical,  roscher2011detection, martinez2016evaluation, goebel2008prognostics},  and  studies on operation of ESS with consideration of health impacts \cite{MASIHTEHRANI20132, 7588052, 7428105}, there are limited studies, e.g. in \cite{saez2015second, keeli2012optimal},  on the operation management of aged batteries for grid applications. For instance \cite{keeli2012optimal} addresses  the uncertainties in the capacity of aged batteries and propose a design based on a probability distribution for the remained capacity and  MonteCarlo simulation,  but  it does not directly engage in the modeling of aged battery.
 
 There are studies in the context of second-life-batteries that address modeling and impact analysis of aged batteries in design of customized converters for hybrid systems with aged batteries \cite{6861989}, battery monitoring systems with considering the mismatch in condition of aged  batteries \cite{tong2017demonstration}, and classification of aged electric vehicle batteries based on their capacity and health conditions \cite{liao2017performance}. However, the majority of works for operation management of the ESS, overlook such impacts.
 
