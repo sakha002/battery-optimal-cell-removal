@@ -41,11 +41,9 @@ M.~A. Roscher, J.~Assfalg, and O.~S. Bohlen, ``Detection of utilizable capacity
   technology}, vol.~60, no.~1, pp. 98--103, 2011.
 
 \bibitem{martinez2016evaluation}
-E.~Martinez-Laserna, E.~Sarasketa-Zabala, D.-I. Stroe, M.~Swierczynski,
-  A.~Warnecke, J.-M. Timmermans, S.~Goutam, and P.~Rodriguez, ``Evaluation of
-  lithium-ion battery second life performance and degradation,'' in \emph{2016
-  IEEE Energy Conversion Congress and Exposition}.\hskip 1em plus 0.5em minus
-  0.4em\relax IEEE, 2016, pp. 1--7.
+E.~{Martinez-Laserna, et. al.}, ``Evaluation of lithium-ion battery second life
+  performance and degradation,'' in \emph{Proc. of IEEE Energy Conversion
+  Congress and Exposition}, 2016.
 
 \bibitem{goebel2008prognostics}
 K.~Goebel, B.~Saha, A.~Saxena, J.~R. Celaya, and J.~P. Christophersen,
@@ -53,17 +51,14 @@ K.~Goebel, B.~Saha, A.~Saxena, J.~R. Celaya, and J.~P. Christophersen,
   measurement magazine}, vol.~11, no.~4, pp. 33--40, 2008.
 
 \bibitem{saez2015second}
-A.~Saez-de Ibarra, E.~Martinez-Laserna, C.~Koch-Ciobotaru, P.~Rodriguez, D.-I.
-  Stroe, and M.~Swierczynski, ``Second life battery energy storage system for
-  residential demand response service,'' in \emph{2015 IEEE International
-  Conference on Industrial Technology (ICIT)}.\hskip 1em plus 0.5em minus
-  0.4em\relax IEEE, 2015, pp. 2941--2948.
+A.~{Saez-de-Ibarra, et. al.}, ``Second life battery energy storage system for
+  residential demand response service,'' in \emph{Proc. of IEEE International
+  Conference on Industrial Technology}, 2015, pp. 2941--2948.
 
 \bibitem{keeli2012optimal}
 A.~Keeli and R.~K. Sharma, ``Optimal use of second life battery for peak load
-  management and improving the life of the battery,'' in \emph{2012 IEEE
-  International Electric Vehicle Conference}.\hskip 1em plus 0.5em minus
-  0.4em\relax IEEE, 2012, pp. 1--6.
+  management and improving the life of the battery,'' in \emph{Proc. of IEEE
+  International Electric Vehicle Conference}, 2012, pp. 1--6.
 
 \bibitem{6861989}
 N.~{Mukherjee} and D.~{Strickland}, ``Control of second-life hybrid battery
@@ -72,15 +67,14 @@ N.~{Mukherjee} and D.~{Strickland}, ``Control of second-life hybrid battery
   Feb 2015.
 
 \bibitem{tong2017demonstration}
-S.~Tong, T.~Fung, M.~P. Klein, D.~A. Weisbach, and J.~W. Park, ``Demonstration
-  of reusing electric vehicle battery for solar energy storage and demand side
-  management,'' \emph{Journal of Energy Storage}, vol.~11, pp. 200--210, 2017.
+S.~{Tong, et. al.}, ``Demonstration of reusing electric vehicle battery for
+  solar energy storage and demand side management,'' \emph{Journal of Energy
+  Storage}, vol.~11, pp. 200--210, 2017.
 
 \bibitem{liao2017performance}
-Q.~Liao, M.~Mu, S.~Zhao, L.~Zhang, T.~Jiang, J.~Ye, X.~Shen, and G.~Zhou,
-  ``Performance assessment and classification of retired lithium ion battery
-  from electric vehicles for energy storage,'' \emph{International Journal of
-  Hydrogen Energy}, vol.~42, no.~30, pp. 18\,817--18\,823, 2017.
+Q.~{Liao, et. al.}, ``Performance assessment and classification of retired
+  lithium ion battery from electric vehicles for energy storage,''
+  \emph{International Journal of Hydrogen Energy}, vol.~42, no.~30, 2017.
 
 \bibitem{PHIL}
 Z.~Taylor, H.~Hejazi, and H.~Mohsenian-Rad, ``Power hardware-in-loop simulation
