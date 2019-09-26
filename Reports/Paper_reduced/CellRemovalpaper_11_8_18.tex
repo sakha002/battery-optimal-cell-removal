@@ -143,8 +143,8 @@ In this regard, we identify the conditions, and algorithms to predict when remov
 
 \section{Battery Pack Capacity Modeling Estimation with and without a Particular Cell}
 
-A typical battery pack comprises several battery  cells that are connected in series and strings of cells that are connected in parallel. 
-Different battery  cells within a battery pack do not have the same characteristics when they are manufactured.
+A  battery pack comprises several battery  cells that are connected in series and strings of cells  connected in parallel. 
+Different battery  cells within the pack do not have the same characteristics when they are manufactured.
  Also, over time, they age differently; thus, further  diverging in their  conditions.
 As a result,  the voltage trajectory during charge/discharge will vary for different cells.
 For instance, consider the voltage profiles of a 12-cell BESS,   in Fig. \ref{fig:packoperation}, during one charge  cycle and one discharge cycle.
@@ -164,17 +164,19 @@ This is essentially a \emph{lost capacity} due to the different aging conditions
 
 \begin{figure}[t]
 \centering
-\vspace{-0.2cm}
-{\scalebox{.5}{\includegraphics*{figs/TestVoltagesV4.eps}}} \vspace{-0.2cm}
+\vspace{-0.25cm}
+{\scalebox{.5}{\includegraphics*{figs/TestVoltagesV4.eps}}} \vspace{-0.3cm}
 \caption{The voltage profiles of the cells in a battery pack.}
-\vspace{-0.3cm}
+\vspace{-0.4cm}
 \label{fig:packoperation}
 \end{figure}
+
+\vspace{-0.1cm}
 
 \subsection{Initial Capacity}
 Consider a battery pack with $\overline{n}$  as the number of cells in series. 
 We discretize the operation horizon into time slots of duration $\tau$.
-Suppose $C[t, b]$ denotes the charge level of cell $n$ at time slot $t$.
+Suppose $C[t, b]$ denotes the energy level of cell $n$ at time slot $t$.
 We also denote the capacity limit of cell $n$ with $\overline{c}_n$.
 Naturally, when the battery module is discharged/charged,  the power drawn/stored in the battery module at any time slot $t \in \mathcal{T}$, denoted by $P_{out}[t]$,  is the sum of the power drawn/stored in each individual cell $n$, denoted by $P_{o}[t,n]$.
 %\begin{equation}
@@ -192,7 +194,7 @@ If we assume a simple model with an internal resistance $r[n]$ for each cell, th
 C[t,n]=C[t-1,n] +  \tau(P_{o}[t,n] - r[n]I^2[t]).
 \label{energycell}
 \end{equation}
-
+%
 %The cell charge level is directly related to the open circuit voltage $V_{oc}[t,n]$ of the cell by an increasing function $f(\cdot)$.
 %%The open circuit voltage is the voltage of the cell when there is no current applied, and all of the transients in voltage have settled.
 %%Thus $C[t,n]$ is at its maximum $C[t,n]=\overline{c}$  when $V_{oc}[t,n]=\overline{v}$.
@@ -243,7 +245,7 @@ Due to this we can find the maximum usable energy storage capability for a pack 
 %\noindent Here  we have $P[t,n]$ a negative value during the discharge; the cell that sooner deplete the stored energy will have a greater negative sum of energy.
 %Often a cell that is in a degraded condition has  high resistance in addition to the low capacity. %, however, as we will see in the section ??, we can have other cells as well with similar resistance.
 %
-
+\vspace{-0.3cm}
 \subsection{Capacity After Cell Removal }
 Next, we investigate  if removing a cell could increase the capacity of the battery pack.
 Normally  a cell is not removed because of being out of balance,  rather the battery  pack would require  balancing.
@@ -349,7 +351,7 @@ In this case, if we denote the battery cells in each string by index $s$,  then 
 \vspace{-0.2cm}
 {\scalebox{.18}{\includegraphics*{figs/rtdspic.png}}} \vspace{-0.2cm}
 \caption{The PHIL testbed for grid-tied BESS operation testing.}
-\vspace{-0.3cm}
+\vspace{-0.2cm}
 \label{fig:philtestbed}
 \end{figure}
 
