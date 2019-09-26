@@ -51,19 +51,19 @@
 
 \author{ Hossein Akhavan-Hejazi, \IEEEmembership{Member,~IEEE}, Zach Taylor, \IEEEmembership{ Member,~IEEE},  \\ and Hamed Mohsenian-Rad, \IEEEmembership{Senior Member,~IEEE}
 
-\thanks{The authors are with the College of Engineering, University of California, Riverside, CA, USA.  The corresponding author is H. Mohsenian-Rad, e-mail: hamed@ece.ucr.edu.} \vspace{-0.5cm}}
+\thanks{The authors are with the College of Engineering, University of California, Riverside, CA, USA.  The corresponding author is H. Mohsenian-Rad.} \vspace{-0.5cm}}
 
 \maketitle
 
 \vspace{-0.4cm}
 
 \begin{abstract}
-The operation, management, and maintenance of aged batteries is essential to improve the life-time and viability of grid-connected energy storage systems. 
+The operation, management, and maintenance of aged batteries is essential to improve the reliability and performance  of grid-connected energy storage systems. 
 %In this work we present a new model to assess the impact of degraded cells in the battery pack on capacity and operation performance of the battery storage system.  
-In this paper, we optimize the process of  identifying which battery cells from a battery pack should be removed due to aging in order to  improve the overall operation of the battery pack for grid applications. 
+In this paper, we optimize the process of  identifying which battery cells from a grid-tied battery pack should be removed due to aging in order to  improve the overall operation of the battery pack for smartgrid applications. 
 % can improve the operation of the system and estimate the capacity increase to justify the cell removal. 
-The  experimental hardware-in-the-loop (HIL) testing of a complete grid-integrated battery system with aged cells are used to  validate the developed  models and show the increase in overall  capacity with removing the identified cells. 
-We also perform case studies to asses the impact of  cell removal on  the operation of an aged battery system in a peak demand control application. \vspace{0.3cm}
+The  experimental hardware-in-the-loop (HIL) testing of a complete grid-integrated battery system with aged cells are used to  validate the developed  models and show the increase in the overall  capacity once the identified cells are removed. 
+We also perform case studies to asses the impact of  cell removal on  the operation of an aged battery system in a peak demand shaving application. \vspace{0.3cm}
 
 \textbf{\emph{Keywords}}: Aged battery pack, grid-tied  storage,  cell removal.
 \end{abstract}
@@ -122,7 +122,7 @@ We also perform case studies to asses the impact of  cell removal on  the operat
 %\color{black}
 Battery cells  in grid-connected battery energy storage systems (BESSs), degrade  over time.
 To maintain economic viability, the BESS however should continue operation even with  degraded batteries.
-While  modeling and operation  of grid-connected BESS has gained substantial attention in the literature, e.g. in \cite{8663451, 8003332}, there are still not  many studies focusing on operating BESS with  aged batteries.  
+Although  modeling and operation  of grid-connected BESS has gained substantial attention in the literature, e.g. in \cite{8663451, 8003332}, there are still limited studies focusing on operating BESS with  \emph{aged batteries}.  
 For example,  there are  studies on degradation modeling and capacity estimation of battery cells, e.g in \cite{rong2006analytical,  roscher2011detection, martinez2016evaluation, goebel2008prognostics}.
 %  and  studies on operation of ESS with consideration of health impacts \cite{MASIHTEHRANI20132, 7588052, 7428105}, 
 There are also limited studies, e.g. in \cite{saez2015second, keeli2012optimal},  to support the use of second life batteries in grid applications. 
@@ -131,21 +131,23 @@ There are also limited studies, e.g. in \cite{saez2015second, keeli2012optimal},
 Aged batteries and their characteristics are also considered in designing customized converters \cite{6861989}, battery monitoring systems  \cite{tong2017demonstration}, and transportation electrification \cite{liao2017performance}.
 % However, the majority of works for operation management of the ESS, overlook such impacts.
 However, the existing literature on grid-integrated BESS often overlooks a very simple and practical solution, and that is the idea of removing certain cells that are holding back the performance of the battery pack as a whole. 
-In this letter paper, we seek to address this issue by answering the following two questions: 
-\emph{"how the performance variation of the battery cells and the battery pack construct may impact the overall capacity and operation of the BESS?"} 
- Accordingly, \emph{how can we systematically remove one or more battery cells to improve the overall capacity and collective operation of the remaining cells in BESS?} 
-In this regard, we identify the conditions, and algorithms to predict when removing a battery cells from the pack may enhance the operation of the system.  
+
+
+In this letter paper, we seek to address the above issue by answering the following two questions: 
+\emph{``how does the performance variation of aged  battery cells and the battery pack construct  impact the overall capacity and operation of the BESS?"} 
+ Accordingly, \emph{``how can we systematically remove one or more battery cells to improve the overall capacity and collective operation of the remaining cells in BESS?"} 
+In this regard, we develop a method to identify under what conditions a battery cell  should be removed  from the battery pack to  enhance its operation in grid-tied applications.   
 
 %[ref3] states the need for logging and storing the  battery operation and ageing in order to facilitate the use of aged batteries.
 
 
 %We  argue that, if the reduced capacity of a battery pack is due to a single or few cells with lower capacity, then it could be that removing the degraded cell(s) actually increases the battery pack capacity. We then present a method in order to identify the cells, if any, that need to be removed to enhance the usable capacity of the battery pack.
 
-\section{Battery Pack Capacity Modeling Estimation with and without a Particular Cell}
+\section{Battery Pack Capacity  Estimation with and without a Particular Cell}
 
 A  battery pack comprises several battery  cells that are connected in series and strings of cells  connected in parallel. 
-Different battery  cells within the pack do not have the same characteristics when they are manufactured.
- Also, over time, they age differently; thus, further  diverging in their  conditions.
+Different battery  cells within the pack do \emph{not} have the same characteristics when they are manufactured.
+ Also, over time, they \emph{age differently}; thus, further  diverging in their  conditions.
 As a result,  the voltage trajectory during charge/discharge will vary for different cells.
 For instance, consider the voltage profiles of a 12-cell BESS,   in Fig. \ref{fig:packoperation}, during one charge  cycle and one discharge cycle.
 While all 12 cells in this single battery pack are discharged and charged with the same current, the voltage of some cells decline and incline faster than others.
@@ -177,7 +179,7 @@ This is essentially a \emph{lost capacity} due to the different aging conditions
 Consider a battery pack with $\overline{n}$  as the number of cells in series. 
 We discretize the operation horizon into time slots of duration $\tau$.
 Suppose $C[t, b]$ denotes the energy level of cell $n$ at time slot $t$.
-We also denote the capacity limit of cell $n$ with $\overline{c}_n$.
+We  denote the energy capacity limit of cell $n$ with $\overline{c}_n$.
 Naturally, when the battery module is discharged/charged,  the power drawn/stored in the battery module at any time slot $t \in \mathcal{T}$, denoted by $P_{out}[t]$,  is the sum of the power drawn/stored in each individual cell $n$, denoted by $P_{o}[t,n]$.
 %\begin{equation}
 %P_{out}[t]=\sum_{n \in \mathcal{N}}  P_{o}[t,n].%,  \  \  \  \forall t \in \mathcal{T}.
@@ -201,9 +203,9 @@ C[t,n]=C[t-1,n] +  \tau(P_{o}[t,n] - r[n]I^2[t]).
 \noindent In practice,  a cell cannot be charged beyond a voltage limit $\overline{v}$ or discharged below a voltage limit $\underline{v}$.
 If a cell reaches these voltage limits, the battery operation must cease.
 Thus the cell $n$ is considered at its maximum charge level when its terminal voltage $V_{o}[t_c,n]=\overline{v}$.
-We denote this charge level $C[t_c,n]=\overline{c}[n]$  the capacity limit of cell $n$.
-similarly, the cell is considered at its minimum capacity, $\underline{c}[n]$, when $V_{o}[t_c,n]=\underline{v}$.
-Accordingly, the capacity of cell $n$ can be obtained  as:
+We denote this energy level $C[t_c,n]=\overline{c}[n]$    the capacity limit of cell $n$.
+Similarly, the cell is considered at its minimum capacity, $\underline{c}[n]$, when $V_{o}[t_c,n]=\underline{v}$.
+Accordingly, the energy  capacity of cell $n$ can be obtained  as:
 %
 \begin{equation}
 \overline{c}[n]=   \sum_{t=t_{\underline{c}[n]}}^{t_{\overline{c}[n]} } \tau(P_{o}[t,n] - r[n]I^2[t]),
@@ -212,7 +214,7 @@ Accordingly, the capacity of cell $n$ can be obtained  as:
 %%For example, a cell cannot be charged beyond its voltage limit $\overline{v}$ or discharged beyond its voltage limit $\underline{v}$.
 %%If any cell reaches these voltage limits, the battery operation must cease.
 %%where $c_0[n]$ denotes the initial charge of the cell $n$ before the operation horizon.
-\noindent where $t_{\underline{c}[n]}$ and $t_{\overline{c}[n]}$ are the time instances a cell reaches to minimum and maximum capacity.
+\noindent where $t_{\underline{c}[n]}$ and $t_{\overline{c}[n]}$ are the time instances at which the  cell reaches to its minimum and maximum capacity.
 Since we cannot overcharge a single cell, every cell is limited to the capacity of the smallest capacity cell; even if the cells are balanced.
 Due to this we can find the maximum usable energy storage capability for a pack of cells, denoted by $ \overline{C}$,  to be:
 %
@@ -248,12 +250,14 @@ Due to this we can find the maximum usable energy storage capability for a pack 
 \vspace{-0.3cm}
 \subsection{Capacity After Cell Removal }
 Next, we investigate  if removing a cell could increase the capacity of the battery pack.
-Normally  a cell is not removed because of being out of balance,  rather the battery  pack would require  balancing.
-Accordingly,  when we perform the  analysis for necessity of cell removal, we assume the pack is balanced and the minimum SoC of each cell is zero Wh.
+Normally,  if  a cell is out of balance then it is  not removed ;  instead,  the battery  pack is balanced.
+%because of being out of balance,  rather the battery  pack would require  balancing.
+%Accordingly,  when we perform the  analysis for necessity of cell removal,
+Therefore, for our analysis,   we assume that the pack is already balanced and the minimum SoC of each cell is zero Wh.
 %%We assume the pack is balanced,  as a cell is not removed because of being out of balance, rather the pack would require balancing.
-Let us define a new set, $\mathcal{B}_x$ as the set of all cells except for the $x$ lowest capacity cells.
+Let us define a new set, $\mathcal{B}_x$, as the set of all cells \emph{except for}  the $x$ lowest capacity cells.
 %Typically $x=1$ but it could also be greater than one if there are multiple cells with the low capacity.
-If we build a pack from the cells in  $\mathcal{B}_x$, the new pack would have $\overline{n} - x$ cells, thus the new capacity is:
+If we build a pack from the cells in  $\mathcal{B}_x$,  then the new pack would have $\overline{n} - x$ cells, thus the new capacity would be:
 %
 \begin{equation}
 \label{eq:rhscap}
@@ -261,18 +265,21 @@ If we build a pack from the cells in  $\mathcal{B}_x$, the new pack would have $
 \end{equation}
 %
 The number of cells is reduced by $x$, but now the minimum capacity cell(s) have been removed; therefore the $\min(\cdot)$ term in (\ref{eq:rhscap}) is now greater than the $\min(\cdot)$ term in (\ref{eq:lhscap}).
- The question   becomes \emph{ for which number of cells  this new capacity gain will be greater than the capacity loss from the removed cells? }
+ The question   becomes: \emph{ for which number of cells  this new capacity gain will be greater than the capacity loss from the removed cells? }
 
-Mathematically, this question can be formulated as whether the following inequality
+Mathematically, this question can be answered by checking   whether the following inequality  holds for a given $x$: 
 %
 \begin{equation}
-\overline{n} \  \underset{n\in \mathcal{A}}{min} \ \overline c[n] < (\overline{n}-x) \ \underset{m\in \mathcal{B}_x}{min} \ \overline c[m],
+\overline{n} \  \underset{n\in \mathcal{A}}{min} \ \overline c[n] < (\overline{n}-x) \ \underset{m\in \mathcal{B}_x}{min} \ \overline c[m].
 \label{eq:removecellineq}
 \end{equation}
 %
-holds for a given $x$.  If it  holds, then removing the $x$ lowest capacity cells would actually improve total usable energy in the pack. 
+  If it  does hold, then removing the $x$ lowest capacity cells would  improve the total usable energy in the pack. 
 %%We can visualize this using our test data. As part of the calibration/training step, each cell that reaches zero energy stored will reestimate its parameters. These parameters include $\overline c$ and $r[n]$ (internal resistance). Since we have an estimate for $\overline c$ , we can use it in the above equations to evaluate how helpful a cell is to the total pack. We know that no cell can use more capacity than the lowest cells capacity.
-If the battery system includes multiple string of battery packs in parallel, then removing a cell from one string, involves removing a cell from all other strings as well.
+
+
+In practical grid-tied applications,  the BESS  includes multiple strings of battery cells paralleled in the pack.
+Therefore,  removing a cell from one string, requires  removing a cell from all other strings as well.
 In this case, if we denote the battery cells in each string by index $s$,  then (\ref{eq:removecellineq}) will be updated  as:
 %
 \begin{equation}
@@ -348,27 +355,27 @@ In this case, if we denote the battery cells in each string by index $s$,  then 
 
 \begin{figure}[t]
 \centering
-\vspace{-0.2cm}
+\vspace{-0.1cm}
 {\scalebox{.18}{\includegraphics*{figs/rtdspic.png}}} \vspace{-0.2cm}
 \caption{The PHIL testbed for grid-tied BESS operation testing.}
-\vspace{-0.2cm}
+\vspace{-0.3cm}
 \label{fig:philtestbed}
 \end{figure}
 
 The Power Hardware in Loop (PHIL) tesbed  presented in \cite{PHIL} was used to perform experimental testing on BESS operation, see Fig. (\ref{fig:philtestbed}). 
-The battery pack consists of 12  40Ah GBS Lithium Iron Phosphate cells \cite{elitepower}. 
-The cells are in the used condition, and several of them have degraded over time. 
+The battery pack consists of twelve  40Ah GBS Lithium Iron Phosphate cells. % \cite{elitepower}. 
+The cells are in the \emph{used condition}, and several of them have \emph{degraded over time}. 
 
 
-Before the test, all cell were balanced and discharged to a voltage of 3.00 V. 
-The test included operating the BESS over a full cycle, by charging and discharging at a constant 1 A current.  %\ref{fig:initial_soc}(a).
-The voltages  at each cell terminals  was  recorded. % while the pack was charged from empty to full.  
+Before the test, all cells were balanced and discharged to a voltage of 3.00 V. 
+The test included operating the BESS over a full cycle, by charging/discharging at a constant 1 A current.  %\ref{fig:initial_soc}(a).
+The voltage  at the terminals of each cell   was  recorded. % while the pack was charged from empty to full.  
 %Accordingly, we obtain the energy delivered to each cell terminal during this period. %, as shown in Fig. \ref{fig:initial_soc}(b). 
 %Next the battery pack was discharged until fully depleted. 
-The results are shown in Fig.  \ref{fig:packoperation}.
+The results are shown in Fig.  \ref{fig:packoperation}  in Section II.A.
 The battery pack delivered 274 Wh of energy during discharge.
 %Thus, this is the overall battery available energy.
-Based on the BESS operation test, the  internal resistance and energy capacity for all cells was estimated, see  Fig. \ref{fig:cell_removal1}(a) and \ref{fig:cell_removal1}(b) respectively.
+Based on the BESS operation test, the  internal resistance and energy capacity for all cells were  estimated, see  Fig. \ref{fig:cell_removal1}(a) and \ref{fig:cell_removal1}(b).
 
 
 %%
@@ -399,7 +406,7 @@ Based on the BESS operation test, the  internal resistance and energy capacity f
 %\end{figure}
 
 
-Here we can see that several cells, have severely reduced capacity. 
+We can see that several cells, have severely reduced capacity. 
 Generally all of the cells are below 50\%  of their nominal capacity.
 In particular, cell No. 5, has the weakest capacity of 22.48 Wh. 
 Next, we verify if by removing the weakest cell we can increase the pack capacity.
@@ -432,8 +439,8 @@ Next, we verify if by removing the weakest cell we can increase the pack capacit
 \centering
 \vspace{-0.2cm}
 {\scalebox{.52}{\includegraphics*{figs/cell_resistance_capacity_Energy_v4_3subfigs.eps}}} \vspace{-0.3cm}
-\caption{Estimated values for  cells 1 to 12;  (a) energy capacity, (b) internal resistance, and (c) pack energy capacity.}
-\vspace{-0.3cm}
+\caption{The results of parameter estimation  for  cells 1 to 12:  (a) energy capacity, (b) internal resistance, and (c) pack energy capacity.}
+\vspace{-0.5cm}
 \label{fig:cell_removal1}
 \end{figure}
 
@@ -463,10 +470,10 @@ Next, we verify if by removing the weakest cell we can increase the pack capacit
 
 %The usable capacity with no change is:
 
-Based on the analysis in Section II-A, the following assessments was made: 
-(i) the available energy of the pack can be estimated from that of cell No.  5 at 269. 7 WHr.
-(ii) The next cell that would limit the battery operation is Cell. No. 9 with 26.2 Wh delivered energy.
-(iii) By removing the cell No. 5, the battery pack delivered energy will increase to 288 Wh.
+Based on the analysis in Section II-A, the following assessments were made: 
+(i) the available energy of the pack can be estimated from that of cell No.  5 at 269.7 Wh.
+(ii) The next cell that would limit the battery operation is cell. No. 9 with 26.2 Wh delivered energy.
+(iii) By removing  cell No. 5, the  delivered energy of the battery pack will increase  to 288 Wh.
 (iv) Additional cell removal will results in decrease of the overall pack capacity.
 The energy capacity of the battery pack from removing the $x$ weakest cells is shown in Fig.  \ref{fig:cell_removal1}(c). 
 
@@ -486,25 +493,25 @@ The energy capacity of the battery pack from removing the $x$ weakest cells is s
 \vspace{-0.3cm}
 
 \subsection{Modified  Battery Pack Capacity Testing}
-After the cell removal analysis, we modified the  battery pack and  conducted the second BESS operation test, in order to verify the assessments.
+Next, we actually modified the  battery pack in our PHIL test system and  conducted the second BESS operation test, in order to verify the assessments.
 We removed the weakest cell, i.e. cell No. 5. 
-We balanced the pack and then operated the BESS with 11 cells for a full cycle same as  Section \ref{sec:capacity_test_1}.
-Fig.  \ref{fig:cell_removal3} shows the voltage characteristics of the pack with 11 cells during a full cycle.
-The characteristics of the weakest cell from the previous experiment is also shown as a reference.
+We balanced the pack and then operated the BESS with 11 cells for a full cycle , similar to the test in   Section \ref{sec:capacity_test_1}.
+Fig.  \ref{fig:cell_removal3} shows the voltage characteristics of the pack with the remaining 11 cells during a full cycle.
+The curve for the weakest cell from the previous experiment is also shown as a reference.
 
-We  see that both charge and discharge time of the BESS has significantly increased. 
+We  see that both charge and discharge times of the BESS have significantly increased. 
 The BESS discharge time increases more than  charge time due to higher resistance of the removed cell.
 The pack discharge time  increases by 2.5 hours.
-As predicted,  the delivered energy of the modified pack increases to 300 Wh.
-Also,  the limiting cell in the modified pack is cell No. 9. 
-Finally, we can see that the value for the pack delivered energy closely matches with that of predicted model.
+\emph{As predicted,  the delivered energy of the modified pack increases to 300 Wh}.
+The limiting cell in the modified pack is now cell No. 9, which again we had predicted.  
+Finally, we can see that the value for the pack delivered energy closely matches  to that of the predicted model.
 %\footnote{Hossein: I can add another figure that compares the internal soc curve of the cells in 11 and 12 cell pack operation.}
 
 \begin{figure}
 \centering
-\vspace{-0.2cm}
+\vspace{-0.4cm}
 {\scalebox{.5}{\includegraphics*{figs/TestVoltagesBoth_v2.eps}}} \vspace{-0.3cm}
-\caption{The voltage characteristics of the 11 cells in the modified pack,  by removing the weakest cell. }
+\caption{The voltage characteristics of the remaining 11 cells in the modified pack,  by removing the weakest cell. }
 \vspace{-0.3cm}
 \label{fig:cell_removal3}
 \end{figure} 
@@ -515,27 +522,27 @@ Finally, we can see that the value for the pack delivered energy closely matches
 \vspace{-0.2cm}
 {\scalebox{.5}{\includegraphics*{figs/perfromance_increase_capacity_increase.eps}}} \vspace{-0.3cm}
 \caption{ (a) BESS capacity before and after cell removal; (b) weak cell and cell removal impact on BESS  performance in  peak shaving application. }
-\vspace{-0.3cm}
+\vspace{-0.4cm}
 \label{fig:operation_impact}
 \end{figure} 
 
 \vspace{-0.3cm}
-\subsection{System Operation Impact Analysis }
+\section{Impact on Smart Grid Applications}
 
 %Next, we consider a numerical study where the advantage and impact of the presented models can be examined.
-To examine the impact of the cell removal analysis on BESS performance, 
-we considered a 100 kW/ 200 kWh BESS operated for commercial demand peak shaving.
+To examine the impact of the cell removal analysis on the performance of a grid-tied  BESS, 
+we consider a 100 kW/ 200 kWh BESS operated for commercial demand peak shaving \cite{8051105}.
 %The demand data of a real microgrid was used to evaluate the BESS operation.
 The battery pack includes 6 parallel strings,   each with 260 cells in series.
-The cells are the same model described in Section \ref{sec:capacity_test_1}.
-BESS is in the used condition and the cells have about 80\% of nominal capacity.
-However,  we assume that there are  5\%   weak cells with the characteristics similar to cell No. 5.
+The cells have  the same model, as  described in Section \ref{sec:capacity_test_1}.
+The BESS is in the used condition and the cells have $\sim	80\%$ of nominal capacity.
+We assume  there are  5\%   weak cells with the characteristics similar to cell No. 5.
 
-We operate the BESS in six  test cases, where the same number of weak cells are affecting  one  or more of the battery strings. % ed varying number of the battery strings.
- BESS is also operated without any weak cells.
-Again, each string of series cells, is constrained based on the performance of the weak cells.
-However, the BESS is operated in each case without the knowledge on weak cells. 
-The BESS was operated for one week in each case before and after applying the proposed cell removal.
+We operate the BESS in six  test cases, where the same number of weak cells  affect  one  or more of the battery strings. % ed varying number of the battery strings.
+The  BESS is also operated without any weak cells.
+Again, each string of the series cells, is constrained based on the performance of the weak cells.
+However, the BESS is operated in each case \emph{without the knowledge on any such weak cells}. 
+The BESS was operated for one week in each case \emph{before} and \emph{after} applying the proposed cell removal.
 %
 %Fig. \ref{fig:operation_impact} shows the result of system operation in each test case before and after weak cell removal.
 %Here in Fig. \ref{fig:operation_impact}(a) we can see the pack capacity where one or more of the battery strings are affected with weak cells.
@@ -543,14 +550,15 @@ The BESS was operated for one week in each case before and after applying the pr
 %  The system is operated in each case without the knowledge on weak cells. 
 
 Fig. \ref{fig:operation_impact}(a) shows the BESS overall energy capacity in each test case before and after cell removal.
-We see when the same number of week cells are affecting more strings, their impact is more severe and the BESS capacity reduces more.
-Thus, the cell removal in such  cases would lead to a significant increase of BESSS overall energy capacity.
+We see that when the same number of week cells are affecting more strings, their impact is more severe and the BESS capacity reduces more.
+Thus,  cell removal in such  cases  leads to a significant increase of BESS overall energy capacity.
 %However,  in the cases that the weak cells are distributed among more strings, their impact is more severe; thus, the cell removal in those cases would lead to even a more significant impact in the capacity increase of the system. 
-In contrast, when the weak cells are all affecting one strings the cell removal will not be useful.
- Note that removing weak cells also involves removing cells from other strings as well, so when the the weak cells are in few strings the cell removal operation is less effective. 
+In contrast, when the weak cells are all affecting one string, the cell removal is not  useful.
+ Recall  that, removing weak cells also requires  removing cells from other strings; thus,  when the the weak cells are in few strings, the cell removal operation is less effective. 
+
 Fig. \ref{fig:operation_impact}(b), shows the impact of the weak cells  on BESS  operation performance.
   When two or more  strings are affected by the weak cells, the performance loss becomes significant. 
-  in such cases, the operation controller  is also mislead on available capacity, hence,  the impact is more than the loss of  capacity.
+  In such cases, the operation controller  is also mislead on available capacity; hence,  the impact is more than the loss of  capacity.
 
   %This can be used, e.g. to identify the threshold where the cell removal would be needed.
 
@@ -559,9 +567,11 @@ Fig. \ref{fig:operation_impact}(b), shows the impact of the weak cells  on BESS 
 
 \section{Conclusions}
 
-In this paper, we showed how the  characteristics of the weakest cells impact the operation of a battery pack. We develop models to investigate and estimate the conditions where removing cells could lead to increasing the battery pack capacity. We performed experimental and numerical analysis to validate the models and to show their impact in the operation enhancement of the grid-tied battery storage systems.
-
-
+We showed how the  characteristics of the weakest cells impact the operation of a grid-tied BESS with aged battery cells. 
+% We develop models to investigate and estimate the conditions where removing cells could lead to increasing the battery pack capacity. We performed experimental and numerical analysis to validate the models and to show their impact in the operation enhancement of the grid-tied battery storage systems.
+The analysis was done for both single-string and multi-string scenarios.
+ Experimental results in a PHIL testing platform confirmed that the proposed methodology can result in increasing the BESS useful capacity. 
+In particular, we showed the advantages of the proposed cell-removing approach to operate grid-tied BESS for peak-load shaving applications. 
 
 
 

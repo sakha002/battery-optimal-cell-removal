@@ -81,8 +81,9 @@ Z.~Taylor, H.~Hejazi, and H.~Mohsenian-Rad, ``Power hardware-in-loop simulation
   of grid-connected battery systems with reactive power control capability,''
   in \emph{Proc. of IEEE PES NAPS}, Morgantown, WV, Sep. 2017.
 
-\bibitem{elitepower}
-{Elite Power Solutions}. Lithium ion battery datasheet.
-  elitepowersolutions.com/lithium-ion-batteries.
+\bibitem{8051105}
+Z.~{Taylor et. al. }, ``Customer-side scada-assisted large battery operation
+  optimization for distribution feeder peak load shaving,'' \emph{IEEE Trans.
+  on Smart Grid}, vol.~10, no.~1, pp. 992--1004, Jan 2019.
 
 \end{thebibliography}
