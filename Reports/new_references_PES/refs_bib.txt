@@ -1,0 +1,54 @@
+@ARTICLE{7488267,
+author={B. {Xu} and A. {Oudalov} and A. {Ulbig} and G. {Andersson} and D. S. {Kirschen}},
+journal={IEEE Transactions on Smart Grid},
+title={Modeling of Lithium-Ion Battery Degradation for Cell Life Assessment},
+year={2018},
+volume={9},
+number={2},
+pages={1131-1140},
+keywords={ageing;battery management systems;battery testers;lithium compounds;product life cycle management;secondary cells;grid-level storage systems;energy storage planning;battery cell life loss;cycle-counting method;battery energy storage applications;rechargeable lithium-ion batteries;lithium-ion battery degradation model;Batteries;Degradation;Aging;Adaptation models;Data models;Stress;Batteries;energy storage;life estimation;power system economics},
+doi={10.1109/TSG.2016.2578950},
+ISSN={},
+month={March},}
+
+
+@ARTICLE{7562406,
+author={K. {Abdulla} and J. {de Hoog} and V. {Muenzel} and F. {Suits} and K. {Steer} and A. {Wirth} and S. {Halgamuge}},
+journal={IEEE Transactions on Smart Grid},
+title={Optimal Operation of Energy Storage Systems Considering Forecasts and Battery Degradation},
+year={2018},
+volume={9},
+number={3},
+pages={2086-2096},
+keywords={dynamic programming;energy management systems;energy storage;stochastic processes;stochastic programming;stochastic dynamic programming approach;energy storage system;energy storage asset;maximal lifetime value;multifactor battery degradation model;operational strategy;Batteries;Degradation;Numerical models;Australia;Stochastic processes;Optimization;Energy storage;optimal operation;dynamic programming;forecasting;battery aging},
+doi={10.1109/TSG.2016.2606490},
+ISSN={},
+month={May},}
+
+
+@ARTICLE{8383984,
+author={B. {Xu} and Y. {Shi} and D. S. {Kirschen} and B. {Zhang}},
+journal={IEEE Transactions on Power Systems},
+title={Optimal Battery Participation in Frequency Regulation Markets},
+year={2018},
+volume={33},
+number={6},
+pages={6715-6725},
+keywords={ageing;frequency control;optimal control;power grids;power markets;profitability;secondary cells;offline controller;optimal control policy;market profits;PJM Interconnection LLC regulation market;optimal battery participation;battery participants;optimal bidding policy;frequency regulation markets;battery aging model;Batteries;Aging;Frequency control;Performance analysis;Optimization;Energy storage;Degradation;Power system economics;Battery energy storage;degradation;frequency regulation;power system economics},
+doi={10.1109/TPWRS.2018.2846774},
+ISSN={},
+month={Nov},}
+
+
+@ARTICLE{6762912,
+author={D. {Strickland} and L. {Chittock} and D. A. {Stone} and M. P. {Foster} and B. {Price}},
+journal={IEEE Transactions on Sustainable Energy},
+title={Estimation of Transportation Battery Second Life for Use in Electricity Grid Systems},
+year={2014},
+volume={5},
+number={3},
+pages={795-803},
+keywords={battery powered vehicles;power grids;battery recycler;electric vehicle fleet data examination;ultra-low carbon vehicles;battery reuse;electricity grid systems;transportation battery second life estimation;Batteries;Vehicles;System-on-chip;US Department of Defense;Degradation;Discharges (electric);Communication cables;Batteries;electric vehicles (EVs);energy storage;frequency response;smart grids},
+doi={10.1109/TSTE.2014.2303572},
+ISSN={},
+month={July},}
