@@ -1,0 +1,14 @@
+.. Aged Battery Optimal Cell Removal documentation master file, created by
+   sphinx-quickstart on Tue Dec 29 14:47:53 2020.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Aged Battery Optimal Cell Removal Documentation
+===============================================
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Contents:
+
+   readme_link
+
